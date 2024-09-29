@@ -343,30 +343,72 @@
       }
     },
     "/api/v1/promotions": {
-      "post": {
-        "tags": ["Promotions"],
-        "summary": "Create a promotion",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Promotion"
-              }
+        "post": {
+            "tags": ["Promotions"],
+            "summary": "Create a promotion",
+            "security": [
+                {
+                    "bearerAuth": []
+                }
+            ],
+            "requestBody": {
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "libelle": {
+                                    "type": "string",
+                                    "description": "Le nom de la promotion",
+                                    "example": "Promotion 8"
+                                },
+                                "referentiel_id": {
+                                    "type": "string",
+                                    "description": "Identifiant du référentiel associé",
+                                    "example": "-O7UNhPT0L8eJu1uFZal"
+                                },
+                                "ApprenantId": {
+                                    "type": "string",
+                                    "description": "Identifiant de l'apprenant associé",
+                                    "example": "-O7sl2k6HD0wpVwk6tKP"
+                                },
+                                "date_debut": {
+                                    "type": "string",
+                                    "format": "date",
+                                    "description": "Date de début de la promotion",
+                                    "example": "2024-09-01"
+                                },
+                                "date_fin": {
+                                    "type": "string",
+                                    "format": "date",
+                                    "description": "Date de fin de la promotion",
+                                    "example": "2024-12-01"
+                                },
+                                "etat": {
+                                    "type": "string",
+                                    "enum": ["Actif", "Inactif"],
+                                    "description": "État de la promotion",
+                                    "example": "Actif"
+                                }
+                            },
+                            "required": ["libelle", "referentiel_id", "date_debut"]
+                        }
+                    }
+                }
+            },
+            "responses": {
+                "201": {
+                    "description": "Promotion créée avec succès"
+                },
+                "400": {
+                    "description": "Erreur de validation"
+                },
+                "500": {
+                    "description": "Erreur serveur"
+                }
             }
-          }
         },
-        "responses": {
-          "201": {
-            "description": "Promotion created successfully"
-          }
-        }
-      },
       "get": {
         "tags": ["Promotions"],
         "summary": "Get all promotions",
