@@ -1,0 +1,102 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app
+    volumes:
+      - .:/var/www
+      - ./storage/app/firebase_credentiels.json:/var/www/html/Docker_Project/Laravel_Gestion_Pedagogique_laravel/gestion-pedagogique/storage/app/firebase_credentiels.json
+    networks:
+      - laravel
+    environment:
+      DB_CONNECTION: pgsql
+      DB_HOST: postgres
+      DB_PORT: 5433
+      DB_DATABASE: laravel_gestion_pedagogique
+      DB_USERNAME: bab
+      DB_PASSWORD: Sidy2002
+      APP_PORT: 8080
+      FIREBASE_KEY_BASE64: ewogICAgInR5cGUiOiAic2VydmljZV9hY2NvdW50IiwKICAgICJwcm9qZWN0X2lkIjogImdlc2Vj
+        b2xlLTExMzdhIiwKICAgICJwcml2YXRlX2tleV9pZCI6ICJkYWEwOTVhNzI2ZGQyYWQ2MzFiYzZk
+        MzU5ZmEwZjNmYzkxZjdmOWZlIiwKICAgICJwcml2YXRlX2tleSI6ICItLS0tLUJFR0lOIFBSSVZB
+        VEUgS0VZLS0tLS1cbk1JSUV2Z0lCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktnd2dnU2tBZ0VB
+        QW9JQkFRRHpMMDFRck11dXpvODJcbmc4QXYxczJyWVBzdC9iTVdCcTlVTThYQ241SXJ0Q1NaL1A0
+        T2JMMU4raGQyWlhJUXlxQW02L21pSndxY1cvRklcbjRLV3MyTHptR0FjT2lwanUydmhrei9KQUJ2
+        R0FGSUYwb25JWTBnUEp6cXEvUVpjcUhpN0JFK2EwTFB3QUpKSWpcbnp4T0tFbHE5eEM5MDFsU3Q4
+        V1FNSUtiRmlqblNsamZmanllOENpUEN1Y2ZNZHRjZUVwUE9qa0Ntek43KytNYy9cbjNYZldUVnpl
+        dUUxdmVWdmUzbVYrbW1YejVZS3Vha3VnZ3ZweEU0TmtVWVhLcE13L3VYTm5wR1BrQW93WTZIa1Zc
+        blBueEw4WE5pUGFiamdoOHV0VXBscEE3RUZiY1o4VWZvNmhjQ1hwN21BdXIxSy92NmVTU2p6TmxK
+        VXpFQ1hrSnBcbmdIUDB3YzNqQWdNQkFBRUNnZ0VBQ093WTNaZGhaN243WmlnaVVuOENqOEdncFpq
+        VHk4Q1dDVFJYRXFOeEpQcFlcbmgyL1JVRzByNnVMOG5tTHRjdkZFTy9sWGNOd1cxeExHZ1FLQkFa
+        ejRIVWNQWnppdGtNSG04Q2Z5L3VkaVQrMHdcbnJMdFREVmNUUFlIQUlRRkNqeENKYlpzUjBWVi9M
+        M0FvRG5sSUFiNVhwdk8rTy82ckg3Q21GNDNSSUpsSU10SXVcbnplbXNRVUd2aGVxRm0wa0VpSVpU
+        SUV1ZHBNQmJWaFBuM2x3Zk9aazh2M0FxN0NDcDlWZVpDQ0pSeThiamcrQkdcblg5bjZpdS9xZ0Fs
+        VXlERzQxTTBvSDJreFBPSXlwYWpab0NHUkZ0ZFAxVkkvUUxPWWhTbXl3ZFZGc2twSHpJWndcblBt
+        SkxJZlZmZTJlR0dqaTQrOWtGTFIxM1hhVG9IcjdjWGVTMkJEMjRQUUtCZ1FEOWt3dHk1NVpRTlVY
+        ODBCZGRcbmVxckxHSWs1cXdMTmFWZ3hiUmNXWFo3RnZ2cFNOaUJ6cVo5ZTNvM2o1Y2NJUlBZaU54
+        SUl2eVUvT1F2cDBJM3lcblhqWjVPSnA3bnF3SXBWcGVUTGFXMG1wNXFPZEozajJBU0x6ampkT0hE
+        a09aSEVCVnFUcGdCeUhENmdubDM0dGRcbkxjbUJ0SzFFanBtamdWVENpVDNBWmtkbmx3S0JnUUQx
+        Z3RDcUIrK0M1SmMrZUVtUDhFb3JqWWxScnkrdW9WMjZcbnl0Z1pOY1YvUWJiUFJtRmNycXAyN0Zr
+        cjkxNWhhczZVTDFOcEtQY2NGdGtqZ2JwVUdrS0ZBbkxlTTU0M1BIVnRcbldicytSeTNLY0QwNnNM
+        L1ZLMEhSdTR0Z2F0RXo1QUhpeHRlalhWaXo3ei9SMlFOWXZKdndBSFphaUl6QlZsaUtcbkVkMnNl
+        MG4xbFFLQmdRRFJzYXdpRllta1Fxbmg2Mk9uRmkzdlRoY003WEtmMDZIdkhidWQ3MFhCV2JGQUV5
+        cTZcbisyYWoyWCtWR3d1QXR5YWtITTU1RlRrRUUzVGFvbkVBSVJFREpkLzZvcmk1WGFSaG55YlBp
+        cW9xZVpicTZ6SUlcbnlCNE1QOWpSTXVhTDAyVVFjYVdvaTcxTWVsbzlFcVA1SmtnaFR2eUtXVEtN
+        bUFNejdMSjRUUngzZVFLQmdFNENcbmV2c0wrbmJFMjZubDNybjF5QnQrcFp0bTV1ZStMbUlrQWZa
+        QXQ3aHYwUDZiaG1SRXU3Vjk4L2VjYWtqWi96bm1cbnI4SkNXZ0o2NEJRQUxJeDhxNVpINk9maHp1
+        d09NZUhGR1ZING0vd3ZIY1dBVS9RUUFxSDV6WmVkV1V2N3J2MjNcbjROenYxRGVZVmRiLzlhaEVo
+        ZWdFdlphV3ZPTFI1T0E2UFEySlB6N2hBb0dCQVBzencrbXAyL2lzajcwRStLeW5cbmkrWVM0OHFq
+        d3lzN2dwdTJiRmNrbERwL3d5cEY4YkUzbmVwbXFVV2FKZTVGMFRzODVDQW1hYUpMU3AxMnhMcUpc
+        bnBHd1pTNWMzUWJuTERMQ0FlME9hSkRKbjFDYWlZMitvSjF4RG05OVc1NVh6WkJvUEJHUzUvQUNz
+        cDY0OGl0Z3ZcbjErVklnc2E2TDBJbVd3NEs1aXRabjQ3SlxuLS0tLS1FTkQgUFJJVkFURSBLRVkt
+        LS0tLVxuIiwKICAgICJjbGllbnRfZW1haWwiOiAiZmlyZWJhc2UtYWRtaW5zZGstazlhZHJAZ2Vz
+        ZWNvbGUtMTEzN2EuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLAogICAgImNsaWVudF9pZCI6ICIx
+        MDUwNTg5NDA3MTU5MTIzMjU5NjMiLAogICAgImF1dGhfdXJpIjogImh0dHBzOi8vYWNjb3VudHMu
+        Z29vZ2xlLmNvbS9vL29hdXRoMi9hdXRoIiwKICAgICJ0b2tlbl91cmkiOiAiaHR0cHM6Ly9vYXV0
+        aDIuZ29vZ2xlYXBpcy5jb20vdG9rZW4iLAogICAgImF1dGhfcHJvdmlkZXJfeDUwOV9jZXJ0X3Vy
+        bCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9vYXV0aDIvdjEvY2VydHMiLAogICAgImNs
+        aWVudF94NTA5X2NlcnRfdXJsIjogImh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL3JvYm90L3Yx
+        L21ldGFkYXRhL3g1MDkvZmlyZWJhc2UtYWRtaW5zZGstazlhZHIlNDBnZXNlY29sZS0xMTM3YS5p
+        YW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsCiAgICAidW5pdmVyc2VfZG9tYWluIjogImdvb2dsZWFw
+        aXMuY29tIgp9Cg==
+      GOOGLE_APPLICATION_CREDENTIALS: /var/www/firebase-key.json
+    expose:
+      - 8080  # Assurez-vous que votre application écoute sur ce port
+
+  webserver:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: nginx
+    volumes:
+      - .:/var/www
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8080:80"  # Assurez-vous que PORT est défini
+    depends_on:
+      - app
+    networks:
+      - laravel
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: first
+      POSTGRES_USER: baba
+      POSTGRES_PASSWORD: Sidy2002
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - laravel
+
+networks:
+  laravel:
+    driver: bridge
+
+volumes:
+  postgres_data:
