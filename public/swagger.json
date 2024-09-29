@@ -5,35 +5,50 @@
     "version": "1.0.0"
   },
   "paths": {
-    "/api/v1/users/firebase": {
-      "post": {
-        "tags": ["Users"],
-        "summary": "Create a new user in Firebase",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/User"
+      "/api/v1/users/firebase": {
+          "post": {
+              "tags": ["Users"],
+              "summary": "Create a new user in Firebase",
+              "security": [
+                  {
+                      "bearerAuth": []
+                  }
+              ],
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "$ref": "#/components/schemas/User"
+                          }
+                      },
+                      "multipart/form-data": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "file": {
+                                      "type": "string",
+                                      "format": "binary"
+                                  },
+                                  "user": {
+                                      "$ref": "#/components/schemas/User"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "201": {
+                      "description": "User created successfully"
+                  },
+                  "400": {
+                      "description": "Bad request"
+                  }
               }
-            }
           }
-        },
-        "responses": {
-          "201": {
-            "description": "User created successfully"
-          },
-          "400": {
-            "description": "Bad request"
-          }
-        }
       }
-    },
+  ,
     "/api/v1/users/{id}": {
       "put": {
         "tags": ["Users"],
