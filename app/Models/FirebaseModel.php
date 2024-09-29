@@ -63,7 +63,7 @@ class FirebaseModel
         $factory = (new Factory)
                 ->withServiceAccount($decodedAccount)
 
-            ->withDatabaseUri('https://gesecole-1137a-default-rtdb.firebaseio.com'/);
+            ->withDatabaseUri('https://gesecole-1137a-default-rtdb.firebaseio.com/');
 
         $this->database = $factory->createDatabase();
         $this->auth = $factory->createAuth();
