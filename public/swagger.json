@@ -638,7 +638,155 @@
                   }
               }
           }
+      },"/api/v1/apprenants/{apprenantId}/presences": {
+          "post": {
+              "tags": ["Apprenants"],
+              "summary": "Ajouter des présences pour un apprenant",
+              "security": [
+                  {
+                      "bearerAuth": []
+                  }
+              ],
+              "parameters": [
+                  {
+                      "name": "apprenantId",
+                      "in": "path",
+                      "required": true,
+                      "description": "Identifiant de l'apprenant",
+                      "schema": {
+                          "type": "string",
+                          "example": "-O7sl2k6HD0wpVwk6tKP"
+                      }
+                  }
+              ],
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "presences": {
+                                      "type": "array",
+                                      "items": {
+                                          "type": "object",
+                                          "properties": {
+                                              "mois": {
+                                                  "type": "string",
+                                                  "description": "Mois de la présence",
+                                                  "example": "Septembre"
+                                              },
+                                              "date": {
+                                                  "type": "string",
+                                                  "description": "Date de la présence",
+                                                  "example": "2024-09-15"
+                                              },
+                                              "entree": {
+                                                  "type": "string",
+                                                  "description": "Heure d'entrée",
+                                                  "example": "08:00"
+                                              },
+                                              "sortie": {
+                                                  "type": "string",
+                                                  "description": "Heure de sortie",
+                                                  "example": "16:00"
+                                              }
+                                          },
+                                          "required": ["mois", "date", "entree", "sortie"]
+                                      }
+                                  }
+                              },
+                              "required": ["presences"]
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "Présences ajoutées avec succès."
+                  },
+                  "400": {
+                      "description": "Erreur de validation."
+                  },
+                  "404": {
+                      "description": "Apprenant non trouvé."
+                  },
+                  "500": {
+                      "description": "Erreur serveur."
+                  }
+              }
+          }
+      },"/api/v1/apprenants/{apprenantId}/notes": {
+          "post": {
+              "tags": ["Apprenants"],
+              "summary": "Ajouter des notes pour un apprenant",
+              "security": [
+                  {
+                      "bearerAuth": []
+                  }
+              ],
+              "parameters": [
+                  {
+                      "name": "apprenantId",
+                      "in": "path",
+                      "required": true,
+                      "description": "Identifiant de l'apprenant",
+                      "schema": {
+                          "type": "string",
+                          "example": "-O7sl2k6HD0wpVwk6tKP"
+                      }
+                  }
+              ],
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "notes": {
+                                      "type": "array",
+                                      "items": {
+                                          "type": "object",
+                                          "properties": {
+                                              "module": {
+                                                  "type": "string",
+                                                  "description": "Nom du module",
+                                                  "example": "Mathématiques"
+                                              },
+                                              "note": {
+                                                  "type": "number",
+                                                  "description": "Note obtenue (de 0 à 20)",
+                                                  "example": 15
+                                              }
+                                          },
+                                          "required": ["module", "note"]
+                                      }
+                                  }
+                              },
+                              "required": ["notes"]
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "Notes ajoutées avec succès."
+                  },
+                  "400": {
+                      "description": "Erreur de validation."
+                  },
+                  "404": {
+                      "description": "Apprenant non trouvé."
+                  },
+                  "500": {
+                      "description": "Erreur serveur."
+                  }
+              }
+          }
       }
+
+
 
 
 
