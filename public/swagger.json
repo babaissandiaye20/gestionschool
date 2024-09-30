@@ -458,7 +458,7 @@
         }
       }
     },
-      "/v1/apprenants": {
+      "/apprenants": {
           "post": {
               "tags": ["Apprenants"],
               "summary": "Créer un nouvel apprenant",
