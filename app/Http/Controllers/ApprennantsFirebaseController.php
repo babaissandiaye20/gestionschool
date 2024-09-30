@@ -22,13 +22,7 @@ class ApprennantsFirebaseController extends Controller
 
     public function store(Request $request)
     {
-        // $validated = $request->validate([
-        //     'nom' => 'required',
-        //     'prenom' => 'required',
-        //     'email' => 'required|email|unique:apprenants,email',
-        //     // Ajoutez d'autres champs de validation selon la capture d'écran et vos besoins
-        // ]);
-//dd($request->all());
+
         $firebaseKey = $this->apprenantsFirebaseService->createApprenant($request->all());
         return response()->json(['message' => 'Apprenant créé avec succès', 'id' => $firebaseKey]);
     }

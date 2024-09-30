@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\StoreUserClientExistRequest;
 use App\Http\Resources\UserResource;
@@ -24,10 +25,10 @@ class UserController extends Controller
 
 
 
-    
+
     public function store(StoreUserRequest $request)
     {
-        
+
         $validatedData = $request->validated();
         // dd($validatedData);
         $user = $this->userService->createUser($validatedData);
@@ -38,19 +39,19 @@ class UserController extends Controller
     {
         // Stocker le fichier Excel dans le répertoire storage/app/public
         Excel::store(new UsersExport, 'users.xlsx', 'public');
-    
+
         // Télécharger le fichier après stockage
         return Excel::download(new UsersExport, 'users.xlsx');
     }
-    
+
     // public function exportPdf()
     // {
     //     $users = User::all();
     //     $pdf = PDF::loadView('users.pdf', compact('users'));
     //     return $pdf->download('users.pdf');
     // }
-   
-  
-  
+
+
+
 
 }

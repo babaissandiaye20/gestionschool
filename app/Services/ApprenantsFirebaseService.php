@@ -83,7 +83,8 @@ class ApprenantsFirebaseService implements ApprenantsFirebaseServiceInterface
         }
 
         // Récupérer les informations de l'utilisateur
-        $userData = $this->apprenantsRepository->findApprenantById($data['user_id']);
+        $userData = $this->apprenantsRepository->findUser($data['user_id']);
+        //dd($userData);
 
         // Vérification si l'utilisateur existe
         if (!$userData) {
@@ -157,64 +158,12 @@ class ApprenantsFirebaseService implements ApprenantsFirebaseServiceInterface
     }
 
 
-    // $qrCodeData = json_encode([
-    //     'name' => $client->surnom,
-    //     'mail' => $client->user->mail,
-    //     'phone' => $client->telephone,
-    // ]);
-    // $qrCodeFileName = 'client_' . $client->id . '.png';
-    // $qrCodePath = app(QrCodeService::class)->generateQrCode($qrCodeData, $qrCodeFileName);
-    // $pdfPath = storage_path('public/pdfs/client_' . $client->id . '.pdf');
-    // app(PdfService::class)->generatePdf('pdf.client', ['client' => $client, 'qrCodePath' => $qrCodePath], $pdfPath);
+
     private function generateMatricule()
     {
         return 'MATRICULE_' . uniqid();
     }
 
-    // Méthode pour générer un code QR
-    // private function generateQRCode(array $data)
-    // {
-    //     // Logique pour générer un code QR et retourner le chemin du fichier
-    //     // Utilise une bibliothèque comme "endroid/qr-code"
-    //     return 'path/to/qr_code.png'; // Remplacer par le chemin réel
-    // }
-
-    // // Méthode pour envoyer un e-mail d'authentification
-    // private function sendAuthEmail($email, $password, $nom, $prenom)
-    // {
-    //     // Logique pour envoyer l'e-mail
-    //     // Utiliser une bibliothèque de mail comme Laravel Mail
-    //     Mail::to($email)->send(new AuthMail($nom, $prenom, $email, $password));
-    // }
-
-    // public function createApprenant(array $data)
-    // {
-    //     if (!isset($data['user_id'])) {
-    //         return ['error' => 'L\'ID de l\'utilisateur est requis.'];
-    //     }
-    //     $userData =  $this->apprenantsRepository->findApprenantById($data['user_id']);
-    //     if (!$userData) {
-    //         return ['error' => 'Utilisateur non trouvé.'];
-    //     }
-    //     $firebaseData = [
-    //         'user' => [
-    //             'id' => $userData['id'],
-    //             'nom' => $userData['nom'],
-    //             'prenom' => $userData['prenom'],
-    //             'email' => $userData['email'],
-    //             'photoCouverture' => $userData['photo'] ?? null,
-    //             'fonction' => null
-    //         ],
-    //         'referentiels' => [
-    //             'id' => $data['referentielId'],
-    //             'nom' => $data['referentielNom']
-    //         ],
-    //         'presences' => [],
-    //         'competences' => []
-    //     ];
-    //     $apprenant = $this->apprenantsRepository->create($firebaseData);
-    //     return $apprenant;
-    // }
 
     public function findApprenantsById($id){
         return $this->apprenantsRepository->find($id);  // Retourne l'apprenant trouvé ou null si non trouvé

@@ -457,7 +457,115 @@
           }
         }
       }
-    }
+    },
+      "/v1/apprenants": {
+          "post": {
+              "tags": ["Apprenants"],
+              "summary": "Créer un nouvel apprenant",
+              "operationId": "createApprenant",
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "user_id": {
+                                      "type": "string",
+                                      "description": "L'ID de l'utilisateur pour lequel l'apprenant sera créé.",
+                                      "example": "-O81DJ_HdEfYI3v_TPXu"
+                                  },
+                                  "referentiel_id": {
+                                      "type": "integer",
+                                      "description": "ID du référentiel associé à l'apprenant.",
+                                      "example": 456
+                                  },
+                                  "presences": {
+                                      "type": "array",
+                                      "items": {
+                                          "type": "object",
+                                          "properties": {
+                                              "date": {
+                                                  "type": "string",
+                                                  "format": "date",
+                                                  "description": "Date de la présence",
+                                                  "example": "2024-09-30"
+                                              },
+                                              "status": {
+                                                  "type": "string",
+                                                  "enum": ["present", "absent"],
+                                                  "description": "Statut de la présence",
+                                                  "example": "present"
+                                              }
+                                          }
+                                      },
+                                      "description": "Liste des présences de l'apprenant."
+                                  }
+                              },
+                              "required": ["user_id"]
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "Apprenant créé avec succès",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "object",
+                                  "properties": {
+                                      "message": {
+                                          "type": "string",
+                                          "example": "Apprenant créé avec succès"
+                                      },
+                                      "id": {
+                                          "type": "string",
+                                          "description": "Clé Firebase de l'apprenant créé.",
+                                          "example": "abc123def456"
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Erreur de validation",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "object",
+                                  "properties": {
+                                      "error": {
+                                          "type": "string",
+                                          "example": "L'ID de l'utilisateur est requis."
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  },
+                  "404": {
+                      "description": "Utilisateur non trouvé",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "object",
+                                  "properties": {
+                                      "error": {
+                                          "type": "string",
+                                          "example": "Utilisateur non trouvé."
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+
+
   },
   "components": {
     "schemas": {

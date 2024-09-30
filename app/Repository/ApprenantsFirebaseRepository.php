@@ -27,6 +27,10 @@ class ApprenantsFirebaseRepository implements ApprenantsFirebaseRepositoryInterf
     public function find(string $id)
     {
         return ApprenantsFirebaseFacade::find($this->firebasePath, $id);
+}
+public function findUser(string $id)
+    {
+          return ApprenantsFirebaseFacade::findNoeudById($id,"users");
     }
 
     public function getAll()
