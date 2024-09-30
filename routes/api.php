@@ -94,13 +94,13 @@ Route::post('/{promotion_id}/apprenants', [PromotionFirebaseController::class, '
     Route::get('/{id}/referentiels', [PromotionFirebaseController::class, 'getReferentielsActifs']);
     Route::get('/{id}/stats', [PromotionFirebaseController::class, 'getStatsPromos']);
 });
-
+Route::get('/v1/apprenant', [ApprennantsFirebaseController::class, 'index']);
 
 // Route::get('/v1/promotions/{id}/apprenants', [PromotionFirebaseController::class, 'getApprenants']);
 Route::prefix('/v1/apprenants')->group(function () {
 Route::post('/', [ApprennantsFirebaseController::class, 'store']);
 Route::post('/bis', [ApprennantsFirebaseController::class, 'storebis']);
-Route::get('apprenants', [ApprennantsFirebaseController::class, 'index']);
+
 Route::post('/{apprenantId}/presences', [ApprennantsFirebaseController::class, 'addPresences']);
 Route::post('/{apprenantId}/notes', [ApprennantsFirebaseController::class, 'addNotes']);
 });

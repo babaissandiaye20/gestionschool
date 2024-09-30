@@ -563,7 +563,84 @@
                   }
               }
           }
+      },"/api/v1/apprenant": {
+          "get": {
+              "tags": ["Apprenants"],
+              "summary": "Récupérer la liste des apprenants",
+              "operationId": "getAllApprenants",
+              "responses": {
+                  "200": {
+                      "description": "Liste des apprenants récupérée avec succès",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  type: "object",
+                                  properties: {
+                                      "apprenants": {
+                                          "type": "array",
+                                          "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                  "id": {
+                                                      "type": "string",
+                                                      "description": "ID de l'apprenant dans Firebase.",
+                                                      "example": "abc123def456"
+                                                  },
+                                                  "nom": {
+                                                      "type": "string",
+                                                      "description": "Nom de l'apprenant.",
+                                                      "example": "Dupont"
+                                                  },
+                                                  "prenom": {
+                                                      "type": "string",
+                                                      "description": "Prénom de l'apprenant.",
+                                                      "example": "Jean"
+                                                  },
+                                                  "email": {
+                                                      "type": "string",
+                                                      "description": "Email de l'apprenant.",
+                                                      "example": "jean.dupont@example.com"
+                                                  },
+                                                  "matricule": {
+                                                      "type": "string",
+                                                      "description": "Matricule de l'apprenant.",
+                                                      "example": "2024-001"
+                                                  },
+                                                  "photoCouverture": {
+                                                      "type": "string",
+                                                      "description": "URL de la photo de couverture de l'apprenant.",
+                                                      "example": "https://example.com/photo.jpg"
+                                                  }
+                                              }
+                                          },
+                                          "description": "Liste des apprenants."
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  },
+                  "404": {
+                      "description": "Aucun apprenant trouvé",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "object",
+                                  "properties": {
+                                      "error": {
+                                          "type": "string",
+                                          "example": "Aucun apprenant trouvé."
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
       }
+
+
 
 
   },
