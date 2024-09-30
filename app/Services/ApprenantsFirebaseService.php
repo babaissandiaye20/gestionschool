@@ -72,7 +72,7 @@ class ApprenantsFirebaseService implements ApprenantsFirebaseServiceInterface
                                                                                           YW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsCiAgICAidW5pdmVyc2VfZG9tYWluIjogImdvb2dsZWFw
                                                                                           aXMuY29tIgp9Cg=="),true))
 
-                     ->withDatabaseUri(env('FIREBASE_DATABASE_URL'));
+                     ->withDatabaseUri('https://gesecole-1137a-default-rtdb.firebaseio.com/');
              $this->database = $firebase->createDatabase();
     }
     public function createApprenant(array $data)
